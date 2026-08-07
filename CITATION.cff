@@ -1,0 +1,28 @@
+# --------------------------------------------
+# CITATION file created with {cffr} R package
+# See also: https://docs.ropensci.org/cffr/
+# --------------------------------------------
+ 
+cff-version: 1.1.0
+message: 'To cite code "manuscript-exposure-wate-burning-2026" in publications use:'
+type: software
+license: CC-BY-4.0
+title: 'manuscript-exposure-wate-burning-2026: Data analysis code for manuscript on ""'
+version: 0.0.1
+doi: https://doi.org/10.5281/zenodo.14278615
+authors:
+- family-names: Vijay
+  given-names: Saloni
+  email: svijay@ic.ac.uk
+  orcid: https://orcid.org/0000-0001-5883-5308
+- family-names: Tilley
+  given-names: Elizabeth
+  email: tilleye@ethz.ch
+  orcid: https://orcid.org/0000-0002-2095-9724
+date-released: ''
+contact:
+- family-names: Vijay
+  given-names: Saloni
+  email: svijay@ic.ac.uk
+  orcid: https://orcid.org/0000-0001-5883-5308
+
