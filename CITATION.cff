@@ -7,7 +7,7 @@ cff-version: 1.1.0
 message: 'To cite code "manuscript-exposure-wate-burning-2026" in publications use:'
 type: software
 license: CC-BY-4.0
-title: 'manuscript-exposure-wate-burning-2026: Data analysis code for manuscript on "Personal Exposure to Black Carbon from Open Waste Burning: Significantly high exposure amongst waste burners"'
+title: 'manuscript-exposure-wate-burning-2026: Data analysis code for manuscript on "Assessing personal black carbon exposure associated with domestic open waste burning in urban Malawi"'
 version: 0.0.1
 doi: https://doi.org/10.5281/zenodo.14278615
 authors:
