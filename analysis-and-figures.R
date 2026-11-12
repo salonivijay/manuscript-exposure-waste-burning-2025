@@ -691,6 +691,12 @@ ggsave(here::here("figures/fig-1-study-area-map.jpeg"),
        units  = "cm")
 
 ## 10.2 Boxplots: eBC exposure by period [Figure 2] -----------------------
+df_owb_exposure <- df_bc_owb_summary_pre |>
+  left_join(ds_MA200, by = c("serial_number", "hh_id")) |>
+  mutate(type = recode(type, "burner" = "Burner", "non_burner" = "Non-Burner")) 
+
+write_csv(df_owb_exposure, "df_owb_exposure.csv")
+
 
 # (A) OWB period
 p3 <- df_bc_owb_summary_pre |>
@@ -707,6 +713,13 @@ p3 <- df_bc_owb_summary_pre |>
   theme(legend.position = "none", axis.title.x = element_blank())
 
 # (B) Non-burning period (PEM excluding OWB)
+
+df_excluding_owb_exposure <- df_unique_summary_pre |>
+  left_join(ds_MA200, by = c("serial_number", "hh_id")) |>
+  mutate(type = recode(type, "burner" = "Burner", "non_burner" = "Non-Burner")) 
+
+write_csv(df_excluding_owb_exposure, "df_excluding_owb_exposure.csv")
+
 p2 <- df_unique_summary_pre |>
   left_join(ds_MA200, by = c("serial_number", "hh_id")) |>
   mutate(type = recode(type, "burner" = "Burner", "non_burner" = "Non-Burner")) |>
@@ -721,6 +734,12 @@ p2 <- df_unique_summary_pre |>
   theme(legend.position = "none", axis.title.x = element_blank())
 
 # (C) Full PEM period
+
+df_full_exposure <- df_bc_pem_summary_pre |>
+  left_join(ds_MA200, by = c("serial_number", "hh_id")) 
+
+write_csv(df_full_exposure, "df_full_exposure.csv")
+
 p1 <- df_bc_pem_summary_pre |>
   left_join(ds_MA200, by = c("serial_number", "hh_id", "type")) |>
   mutate(type = recode(type, "burner" = "Burner", "non_burner" = "Non-Burner")) |>
@@ -741,6 +760,8 @@ ggsave(here::here("figures/fig-2-ebc-exposure-boxplots.jpeg"),
        plot = p_exposures, width = 18, height = 7, dpi = 300, units = "cm")
 
 ## 10.3 Waste mass vs eBC exposure [Figure 4] -----------------------------
+
+write_csv(df_waste_bc, "waste_mass_vs_bc_total.csv")
 
 p_waste_bc_total <- ggplot(df_waste_bc, aes(x = total_waste, y = e_bc_total)) +
   geom_point(aes(size = as.factor(stirring_number), color = as.factor(stirring_number))) +
@@ -827,6 +848,8 @@ ggsave(here::here("figures/fig-app-6-waste-composition.jpeg"),
 
 ## 10.6 Burner/non-burner exposure ratio bar charts [Figure 3] ------------
 
+write_csv(df_bc_owb_ratio, "bc_ratio_during_owb.csv")
+
 p_bc_ratio_owb <- ggplot(df_bc_owb_ratio, aes(x = reorder(hh_id, ratio), y = ratio)) +
   geom_col(aes(fill = Settlement_type)) +
   geom_hline(yintercept = 1, linetype = "dashed", color = "black", size = 0.8) +
@@ -835,6 +858,8 @@ p_bc_ratio_owb <- ggplot(df_bc_owb_ratio, aes(x = reorder(hh_id, ratio), y = rat
   scale_y_continuous(breaks = seq(0, 27, by = 3)) +
   scale_fill_discrete(name = "Settlement type", labels = c("Formal", "Informal")) +
   theme
+
+write_csv(df_bc_unique_ratio, "bc_ratio_excluding_owb.csv")
 
 p_bc_ratio_unique <- ggplot(df_bc_unique_ratio, aes(x = reorder(hh_id, ratio), y = ratio)) +
   geom_col(aes(fill = Settlement_type)) +
